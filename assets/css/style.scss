@@ -1,0 +1,15 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.page-header {
+    background-color: red;
+    background-image: url("../images/pattern_header.png"), linear-gradient(120deg, #155799, #159957);
+    background-repeat: repeat, no-repeat;
+    background-position: center center, left;
+}
+
+.project-tagline {
+    margin-bottom: 0;
+}
