@@ -12,7 +12,7 @@
     }
     .main-content {
         max-width: 1000px;
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.5rem 0;
     }
 }
 .page-header {
@@ -178,4 +178,10 @@
 
 .blend-color:last-child .color-hex-code {
     border-bottom: none;
+}
+
+.site-footer {
+    text-align: center;
+    padding-top: 1rem;
+	border-top: solid 2px #ebebeb;
 }
