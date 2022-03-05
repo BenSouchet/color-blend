@@ -67,13 +67,24 @@
     margin-bottom: 0.1rem;
 }
 
+#steps_wrapper {
+    text-align: center;
+}
+
 #input-controls #steps_wrapper h3 {
     font-size: 1.2rem;
     margin-bottom: 0.4rem;
 }
 
 #input-controls input {
-    width: 5rem;
+    box-sizing: border-box;
+    width: 7.6rem;
+    background: none;
+	background-color: #60606029;
+	border: none;
+	border-radius: 6px;
+	height: 2rem;
+	border-bottom: 4px solid #0000002b;
 }
 
 #input-controls input[type=number]::-webkit-inner-spin-button, 
