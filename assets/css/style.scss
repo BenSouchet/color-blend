@@ -131,12 +131,16 @@
     background-color: currentColor;
 }
 
-.color-preview:hover {
+.blend-color:hover .color-preview {
     border: 2px solid #b3b3b380;
     width: 106%;
 	margin-left: -3%;
 	border-radius: 4px;
     box-sizing: border-box;
+}
+
+.blend-color:hover .color-hex-code {
+    font-weight: bold;
 }
 
 .blend-color:first-child .color-preview {
@@ -151,4 +155,8 @@
 
 .color-hex-code {
     border-bottom: 1px solid #e3e2e2;
+}
+
+.blend-color:last-child .color-hex-code {
+    border-bottom: none;
 }
