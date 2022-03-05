@@ -115,7 +115,7 @@
     <main id="content" class="main-content" role="main">
       {{ content }}
       <footer class="site-footer">
-        <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by
+        <p class="copyright"><b>{{ site.title | default: site.github.repository_name }}</b> maintained by
           {% for maintainer in site.maintainers %}
           <a href="{{ maintainer.url }}" target="_blank" rel="external noopener noreferrer">{{ maintainer.name }}</a>
           {% endfor %}
