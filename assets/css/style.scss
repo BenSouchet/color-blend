@@ -52,7 +52,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
-    padding-top: 10px;
+    padding: 10px 0 30px;
+	border-bottom: 2px solid #0000001f;
     align-items: end;
 }
 
@@ -68,6 +69,10 @@
 }
 
 #steps_wrapper {
+    text-align: center;
+}
+
+#steps_wrapper input {
     text-align: center;
 }
 
@@ -90,4 +95,10 @@
 #input-controls input[type=number]::-webkit-inner-spin-button, 
 #input-controls input[type=number]::-webkit-outer-spin-button {  
    opacity: 1;
+}
+
+#output-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
 }
