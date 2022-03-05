@@ -38,6 +38,14 @@
                 0 20px 20px rgba(0,0,0,.15);
 }
 
+.project-name a,
+.project-name a:hover,
+.project-name a:focus,
+.project-name a:visited {
+    color: white;
+    text-decoration: none;
+}
+
 .main-content {
     background-color: #f7f7f7;
 	border-radius: 6px;
