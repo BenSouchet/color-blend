@@ -38,3 +38,37 @@
     margin-bottom: 0;
     opacity: .9;
 }
+
+#interactive {
+    max-width: 1000px;
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: red;
+}
+
+#input-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    padding-top: 10px;
+}
+
+#input-controls > div {
+    width: fit-content;
+	margin: 0 auto;
+}
+
+#input-controls h3 {
+    margin-bottom: 0.2rem;
+}
+
+#input-controls #steps_wrapper h3 {
+    font-size: 1rem;
+}
+
+#input-controls input[type=number]::-webkit-inner-spin-button, 
+#input-controls input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
