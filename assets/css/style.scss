@@ -68,6 +68,10 @@
     font-size: 1rem;
 }
 
+#input-controls input {
+    width: 5rem;
+}
+
 #input-controls input[type=number]::-webkit-inner-spin-button, 
 #input-controls input[type=number]::-webkit-outer-spin-button {  
    opacity: 1;
