@@ -96,6 +96,10 @@
    opacity: 1;
 }
 
+#tip-msg {
+    text-align: center;
+}
+
 #output-display {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
