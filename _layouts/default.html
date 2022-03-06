@@ -6,9 +6,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossOrigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ '/apple-touch-icon.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
+    <link rel="mask-icon" href="{{ '/safari-pinned-tab.svg' | relative_url }}" color="#962cb4">
+    <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+    <meta name="application-name" content="{{ site.title }}">
+    <meta name="msapplication-TileColor" content="#962cb4">
+    <meta name="theme-color" content="#ffffff">
     {% include head-custom.html %}
   </head>
   <body>
@@ -119,7 +126,7 @@
           {% for maintainer in site.maintainers %}
           <a href="{{ maintainer.url }}" target="_blank" rel="external noopener noreferrer">{{ maintainer.name }}</a>
           {% endfor %}
-          - <a href="{{ site.license.url }}" target="_blank">License {{ site.license.name }}</a></p>
+          - <a href="{{ site.license.url }}" target="_blank">Website code under license {{ site.license.name }}</a></p>
       </footer>
     </main>
   </body>

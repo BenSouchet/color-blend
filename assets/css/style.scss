@@ -3,6 +3,11 @@
 
 @import "{{ site.theme }}";
 
+
+html, body {
+    overscroll-behavior-y: none;
+}
+
 a, a:visited {
 	color: #02b16d;
     text-decoration: underline;
