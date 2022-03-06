@@ -3,6 +3,15 @@
 
 @import "{{ site.theme }}";
 
+a, a:visited {
+	color: #02b16d;
+    text-decoration: underline;
+}
+a:hover, a:focus {
+    color: #00c97c;
+    text-decoration: underline;
+}
+
 @media screen and (min-width: 64em) {
     .page-header {
         padding: 2rem;
@@ -204,6 +213,22 @@
 
 .blend-color:last-child .color-hex-code {
     border-bottom: none;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+    color: #4c008d;
+}
+
+.main-content code,
+.main-content pre {
+    font-size: 1rem;
+	color: #685b73;
+	background-color: #e3dbea;
 }
 
 .site-footer {
