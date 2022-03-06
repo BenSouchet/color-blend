@@ -16,7 +16,7 @@
     }
 }
 .page-header {
-    background-color: red;
+    background-color: #303030;
     background-image: url("../images/pattern_header.png"),linear-gradient(120deg, #303030, #666666);
     background-repeat: repeat, no-repeat;
     background-position: center center, left;
@@ -38,10 +38,10 @@
                 0 20px 20px rgba(0,0,0,.15);
 }
 
-.project-name a,
-.project-name a:hover,
-.project-name a:focus,
-.project-name a:visited {
+.page-header a,
+.page-header a:hover,
+.page-header a:focus,
+.page-header a:visited {
     color: white;
     text-decoration: none;
 }
