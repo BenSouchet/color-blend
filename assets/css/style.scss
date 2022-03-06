@@ -247,7 +247,7 @@ a:hover, a:focus {
 
 @media screen and (min-width: 42em) and (max-width: 64em) {
     .main-content {
-        padding: 2rem 1.5rem 0;
+        padding: 2rem 0 0;
         margin: 3rem 1.8rem;
     }
     .project-name {
@@ -256,8 +256,11 @@ a:hover, a:focus {
 }
 
 @media screen and (max-width: 42em) {
+    #content-wrapper {
+        padding: 0 1rem;
+    }
     .main-content {
-        padding: 2rem 1rem 0;
+        padding: 2rem 0 0;
         margin: 3rem 1.8rem;
     }
     .project-name {
