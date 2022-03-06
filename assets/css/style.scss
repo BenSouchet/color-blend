@@ -50,8 +50,8 @@
 	padding-top: 0.6rem;
     filter: drop-shadow(0 6px 1px rgba(0,0,0,.04))
             drop-shadow(0 0 5px rgba(0,0,0,.1))
-            drop-shadow(0 1px 3px rgba(0,0,0,.3))
-            drop-shadow(0 3px 5px rgba(0,0,0,.2));
+            drop-shadow(0 1px 3px rgba(0,0,0,.1))
+            drop-shadow(0 3px 5px rgba(0,0,0,.1));
 }
 
 .page-header a,
@@ -110,6 +110,7 @@
 
 #steps_wrapper input {
     text-align: center;
+    padding-right: 4px;
 }
 
 #input-controls #steps_wrapper h3 {
@@ -126,6 +127,7 @@
 	border-radius: 6px;
 	height: 2rem;
 	border-bottom: 4px solid #0000002b;
+    padding-left: 8px;
 }
 
 #input-controls input[type=number]::-webkit-inner-spin-button, 
