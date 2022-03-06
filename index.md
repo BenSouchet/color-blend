@@ -4,7 +4,7 @@ Depending on how the colors are stored (RGB, HSB, HSL, ...), the calculation and
 This website show you three blending results according to the most popular color models: **RGB**, **HSB/HSV** & **HSL**. Since the color model doesn't store a color the same way the blending differ.
 
 ## Blending code
-This project is entirely hosted on [here on Github](https://github.com/BenSouchet/color-blend). the `functions` used on this website can be found in [this Javascript file]().
+This project is entirely hosted on [here on Github](https://github.com/BenSouchet/color-blend){:target="_blank" rel="noopener"}. the `functions` used on this website can be found in [this Javascript file](){:target="_blank" rel="noopener"}.
 
 ## Color Models
 ### RGB
@@ -34,8 +34,8 @@ The **HSL** color model also defines a color space in terms of three constituent
 Often, **HSL** offers a more accurate (even if it's not absolute) color approximation than **HSB**.
 
 ## Play with colors
-To understand better the correlation between components of color models and see what's the new result when you tweak values I **highly** recommend you check **[colorizer.org](http://colorizer.org/)**.
+To understand better the correlation between components of color models and see what's the new result when you tweak values I **highly** recommend you check **[colorizer.org](http://colorizer.org/){:target="_blank" rel="noopener"}**.
 
 ## Others Ressouces & Useful links
- - **[colorizer.org](http://colorizer.org/)**, a website to interact with color components and see how color are represented according to multiple color models. You also find related colors (complementary, triad, square, analogic, ...).
- - **[Paletton.com](https://paletton.com/)**, create color palettes (schemes) easily by clicking on a color wheel to select yuor main color.
+ - **[colorizer.org](http://colorizer.org/){:target="_blank" rel="noopener"}**, a website to interact with color components and see how color are represented according to multiple color models. You also find related colors (complementary, triad, square, analogic, ...).
+ - **[Paletton.com](https://paletton.com/){:target="_blank" rel="noopener"}**, create color palettes (schemes) easily by clicking on a color wheel to select yuor main color.
