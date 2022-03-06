@@ -1,5 +1,7 @@
 # Color Blend
 
+<p align="center"><a href="https://bensouchet.github.io/color-blend/"><img width="675" alt="cover_color_blend" src="https://user-images.githubusercontent.com/17025808/156934471-d31078c7-06d3-4c50-b606-3b574452f236.png"></a></p>
+
 Enter two hex colors code and see the blending results obtained using different color models (**RGB**,  **HSB/HSV** & **HSL**).
 
 Website available here : https://bensouchet.github.io/color-blend/
