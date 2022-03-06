@@ -2,7 +2,7 @@
 
 Enter two hex colors code and see the blending results obtained using different color models (**RGB**,  **HSB/HSV** & **HSL**).
 
-Website available here : https://bensouchet.github.io/colors-blend/
+Website available here : https://bensouchet.github.io/color-blend/
 
 ## The code
 

@@ -37,5 +37,5 @@ Often, **HSL** offers a more accurate (even if it's not absolute) color approxim
 To understand better the correlation between components of color models and see what's the new result when you tweak values I **highly** recommend you check **[colorizer.org](http://colorizer.org/)**.
 
 ## Others Ressouces & Useful links
- - [colorizer.org](http://colorizer.org/), a website to interact with color components and see how color are represented according to multiple colr models. You also find related colors (complementary, triad, square, analogic, ...).
- - [Paletton.com](https://paletton.com/), create color palettes (schemes) easily by clicking on a color wheel to select yuor main color.
+ - **[colorizer.org](http://colorizer.org/)**, a website to interact with color components and see how color are represented according to multiple color models. You also find related colors (complementary, triad, square, analogic, ...).
+ - **[Paletton.com](https://paletton.com/)**, create color palettes (schemes) easily by clicking on a color wheel to select yuor main color.
