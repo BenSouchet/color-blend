@@ -18,6 +18,8 @@ The JavaScript `functions` used on the website to compute the blending can be fo
 
 Color Blend has been created and is currently maintained by [Ben Souchet](https://github.com/BenSouchet).
 
+## Licenses
+
 The code present in this repository is under [MIT license](https://github.com/BenSouchet/color-blend/blob/main/LICENSE).
 
 The logo, icon and all image files in this repository are under [(CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/), you cannot edit theses files, you cannot use them for commercial purposes & you must give appropriate credit *(© Color Blend, Ben Souchet)*.
