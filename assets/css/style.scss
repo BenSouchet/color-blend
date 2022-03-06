@@ -8,6 +8,10 @@ html, body {
     overscroll-behavior-y: none;
 }
 
+#content-wrapper {
+    padding: 0 1.8rem;
+}
+
 a, a:visited {
 	color: #02b16d;
     text-decoration: underline;
@@ -159,7 +163,6 @@ a:hover, a:focus {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
     margin-bottom: 3rem;
-    padding: 0 1.8rem;
 }
 
 .result-column {

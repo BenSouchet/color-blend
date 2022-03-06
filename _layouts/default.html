@@ -23,111 +23,113 @@
       <a href="{{ '/' | relative_url }}"><img src="{{ '/assets/images/color_blend_icon.png' | relative_url }}"><h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1></a>
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
     </header>
-    <section id="interactive">
-      <div id="input-controls">
-        <div class="color-input-wrapper">
-          <h3>Color 1</h3>
-          <input type="text" name="color-1-hex">
+    <div id="content-wrapper">
+      <section id="interactive">
+        <div id="input-controls">
+          <div class="color-input-wrapper">
+            <h3>Color 1</h3>
+            <input type="text" name="color-1-hex">
+          </div>
+          <div id="steps_wrapper">
+            <h3>Intermediate colors</h3>
+            <input type="number" min="1" step="1" name="steps-num">
+          </div>
+          <div class="color-input-wrapper">
+            <h3>Color 2</h3>
+            <input type="text" name="color-2-hex">
+          </div>
         </div>
-        <div id="steps_wrapper">
-          <h3>Intermediate colors</h3>
-          <input type="number" min="1" step="1" name="steps-num">
+        <div id="tip-msg">
+          <p>Tip: Click on a color to copy its hex code!</p>
         </div>
-        <div class="color-input-wrapper">
-          <h3>Color 2</h3>
-          <input type="text" name="color-2-hex">
-        </div>
-      </div>
-      <div id="tip-msg">
-        <p>Tip: Click on a color to copy its hex code!</p>
-      </div>
-      <div id="output-display">
-        <div class="result-column">
-          <h3>RGB Blending</h3>
-          <div class="blend-colors">
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
+        <div id="output-display">
+          <div class="result-column">
+            <h3>RGB Blending</h3>
+            <div class="blend-colors">
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
             </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
+          </div>
+          <div class="result-column">
+            <h3>HSV/HSB Blending</h3>
+            <div class="blend-colors">
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
             </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
+          </div>
+          <div class="result-column">
+            <h3>HSL Blending</h3>
+            <div class="blend-colors">
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
+              <div class="blend-color">
+                <div class="color-preview" style="color: #123456"></div>
+                <span class="color-hex-code">#123456</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="result-column">
-          <h3>HSV/HSB Blending</h3>
-          <div class="blend-colors">
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-          </div>
-        </div>
-        <div class="result-column">
-          <h3>HSL Blending</h3>
-          <div class="blend-colors">
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-            <div class="blend-color">
-              <div class="color-preview" style="color: #123456"></div>
-              <span class="color-hex-code">#123456</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <main id="content" class="main-content" role="main">
-      {{ content }}
-      <footer class="site-footer">
-        <p class="copyright"><b>{{ site.title | default: site.github.repository_name }}</b> maintained by
-          {% for maintainer in site.maintainers %}
-          <a href="{{ maintainer.url }}" target="_blank" rel="external noopener noreferrer">{{ maintainer.name }}</a>
-          {% endfor %}
-          - <a href="{{ site.license.url }}" target="_blank">Website code under license {{ site.license.name }}</a></p>
-      </footer>
-    </main>
+      </section>
+      <main id="content" class="main-content" role="main">
+        {{ content }}
+        <footer class="site-footer">
+          <p class="copyright"><b>{{ site.title | default: site.github.repository_name }}</b> maintained by
+            {% for maintainer in site.maintainers %}
+            <a href="{{ maintainer.url }}" target="_blank" rel="external noopener noreferrer">{{ maintainer.name }}</a>
+            {% endfor %}
+            - <a href="{{ site.license.url }}" target="_blank">Website code under license {{ site.license.name }}</a></p>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>
