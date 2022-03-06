@@ -7,3 +7,5 @@ license:
 maintainers:
   - name: Ben Souchet
     url: https://github.com/BenSouchet
+kramdown:
+  input: Kramdown
