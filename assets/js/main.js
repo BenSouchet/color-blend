@@ -255,6 +255,12 @@ function randomDefaultColors() {
             hsv2hex([color2_hue, color2_sat, color2_val])];
 }
 
+function _setInputValues(color1, color2, steps) {
+    COLOR1_INPUT.value = '#' + color1;
+    COLOR2_INPUT.value = '#' + color2;
+    STEPS_INPUT.value = Number(steps);
+}
+
 function generateOutput(color1_str, color2_str, steps) {
     c1 = str2hex(color1_str);
     c2 = str2hex(color2_str);
@@ -264,12 +270,7 @@ function generateOutput(color1_str, color2_str, steps) {
     }
 
     // Params are good, update them
-    COLOR1_INPUT.value = '#' + c1;
-    COLOR2_INPUT.value = '#' + c2;
-    STEPS_INPUT.value = steps;
-
-    // DEBUG
-    console.log('VALID!');
+    _setInputValues(c1, c2, steps);
 
     // Clear previous output
 }
@@ -328,6 +329,9 @@ function initWebsite() {
         COLOR2_INPUT.value = _removeForbiddenCharacters(COLOR2_INPUT.value);
         generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEPS_INPUT.value);
     });
+
+    // Set values in inputs
+    _setInputValues(COLOR1, COLOR2, STEPS);
 }
 
 if (document.readyState !== 'loading') {
