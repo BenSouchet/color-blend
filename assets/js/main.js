@@ -276,7 +276,7 @@ function generateOutput(color1_str, color2_str, steps) {
 }
 
 function _removeForbiddenCharacters(str) {
-    return str.replace(/[^#a-f0-9]+/gi);
+    return str.replace(/[^#a-f0-9]+/gi, '');
 }
 
 function initWebsite() {
