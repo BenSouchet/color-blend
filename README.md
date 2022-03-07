@@ -4,11 +4,13 @@
 
 Enter two hex colors code and see the blending results obtained using different color models (**RGB**,  **HSB/HSV** & **HSL**).
 
-Website available here : https://bensouchet.github.io/color-blend/
+Website here >> https://bensouchet.github.io/color-blend/ <<
 
-## The code
+## Source Code
 
-The JavaScript `functions` used on the website to compute the blending can be found in [this file]().
+The JavaScript `functions` used on the website can be found in [this file](https://github.com/BenSouchet/color-blend/blob/main/assets/js/main.js).
+
+If you want, you can play with the JavaScript functions directly with you browser dev tools, the file isn't minified so it's easy to check and debug.
 
 ## Others Ressouces & Useful links
  - [colorizer.org](http://colorizer.org/), a website to interact with color components and see how color are represented according to multiple colr models. You also find related colors (complementary, triad, square, analogic, ...).
