@@ -264,6 +264,24 @@ function _setInputValues(color1, color2, steps) {
 function generateOutput(color1_str, color2_str, steps) {
     c1 = str2hex(color1_str);
     c2 = str2hex(color2_str);
+
+    // Invalidate input(s)
+    if (!c1) {
+        COLOR1_INPUT.setCustomValidity('Invalid Hex Color Code.');
+    } else {
+        COLOR1_INPUT.setCustomValidity('');
+    }
+    if (!c2) {
+        COLOR2_INPUT.setCustomValidity('Invalid Hex Color Code.');
+    } else {
+        COLOR2_INPUT.setCustomValidity('');
+    }
+    if (!steps) {
+        STEPS_INPUT.setCustomValidity('Value must be at least 1.');
+    } else {
+        STEPS_INPUT.setCustomValidity('');
+    }
+    // Check if we abort
     if (!c1 || !c2 || !steps) {
         // One of the parameters are falsy, abort!
         return false;
