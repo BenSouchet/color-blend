@@ -227,7 +227,7 @@ function hsl2rgb(hsl) {
         const v = Math.round(l * 2.55);
         return [v, v, v];
     }
-    const m2 = (l <= 50 ? l * (100 + s) : l + s - (l * s)) / 100;
+    const m2 = l <= 50 ? l * (100 + s) / 100 : l + s - ((l * s) / 100);
     const m1 = (2 * l - m2);
 
     return [_hue2comp(m1, m2, h + 120), _hue2comp(m1, m2, h), _hue2comp(m1, m2, h - 120)];
@@ -324,9 +324,9 @@ function _getBlendingColors(color1, color2, step, fromHex, toHex, precision = 2)
 
     for (let i = 1; i < step_count; i++) {
         let cn = [...c1];
-        cn[0] += _round(step_a * i, precision);
-        cn[1] += _round(step_b * i, precision);
-        cn[2] += _round(step_c * i, precision);
+        cn[0] = _round(cn[0] + (step_a * i), precision);
+        cn[1] = _round(cn[1] + (step_b * i), precision);
+        cn[2] = _round(cn[2] + (step_c * i), precision);
 
         result.push(toHex(cn));
     }
