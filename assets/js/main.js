@@ -278,7 +278,7 @@ function _removeForbiddenCharacters(str) {
     return str.replace(/[^#a-f0-9]+/gi);
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
+function initWebsite() {
     // Random colors
     [COLOR1, COLOR2] = randomDefaultColors();
 
@@ -328,9 +328,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         COLOR2_INPUT.value = _removeForbiddenCharacters(COLOR2_INPUT.value);
         generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEPS_INPUT.value);
     });
-});
+}
 
-
-// Check url urlParams
-// If exists retrieve else random
-// put values in inputs
+if (document.readyState !== 'loading') {
+    initWebsite();
+} else {
+    document.addEventListener("DOMContentLoaded", function (event) {
+        initWebsite();
+    });
+}
