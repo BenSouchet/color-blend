@@ -7,6 +7,9 @@ let COLOR2_INPUT;
 let COLOR2_INPUT_INVALID_MSG;
 let STEP_INPUT;
 let STEP_INPUT_INVALID_MSG;
+let RGB_BLENDING_CONTAINER;
+let HSV_BLENDING_CONTAINER;
+let HSL_BLENDING_CONTAINER;
 
 function _mod(n, m) {
     // source : https://stackoverflow.com/a/17323608/10797718
@@ -15,6 +18,9 @@ function _mod(n, m) {
 
 function _round(num, p) {
     // source : https://stackoverflow.com/a/12830454/10797718
+    if (p === 0) {
+        return Number(Math.round(num));
+    }
     return +(Number(num).toFixed(p));
 }
 
@@ -159,6 +165,10 @@ function hsv2hex(hsv) {
     return rgb2hex(hsv2rgb(hsv));
 }
 
+function hex2hsv(hex) {
+    return rgb2hsv(hex2rgb(hex));
+}
+
 /**
  * Convert RGB array to HSL array
  * @param {array} rgb  Array of three integers, representing a RGB color.
@@ -227,6 +237,10 @@ function hsl2hex(hsl) {
     return rgb2hex(hsl2rgb(hsl));
 }
 
+function hex2hsl(hex) {
+    return rgb2hsl(hex2rgb(hex));
+}
+
 function _randSatAndVal() {
     const SAT_MIN = 30;
     const SAT_MAX = 101;
@@ -258,13 +272,13 @@ function randomDefaultColors() {
             hsv2hex([color2_hue, color2_sat, color2_val])];
 }
 
-function _setInputValues(color1, color2, steps) {
+function _setInputValues(color1, color2, step) {
     COLOR1_INPUT.value = '#' + color1;
     COLOR2_INPUT.value = '#' + color2;
-    STEP_INPUT.value = Number(steps);
+    STEP_INPUT.value = Number(step);
 }
 
-function _isInputsValid(color1, color2, steps) {
+function _isInputsValid(color1, color2, step) {
     // Invalidate input(s)
     if (!color1) {
         COLOR1_INPUT.setCustomValidity('Invalid Hex Color Code.');
@@ -280,7 +294,7 @@ function _isInputsValid(color1, color2, steps) {
         COLOR2_INPUT.setCustomValidity('');
         COLOR2_INPUT_INVALID_MSG.classList.add('not-visible');
     }
-    if (!steps) {
+    if (!step || step === 0) {
         STEP_INPUT.setCustomValidity('Value must be at least 1.');
         STEP_INPUT_INVALID_MSG.classList.remove('not-visible');
     } else {
@@ -289,7 +303,7 @@ function _isInputsValid(color1, color2, steps) {
     }
 
     // Check if we abort
-    if (!color1 || !color2 || !steps) {
+    if (!color1 || !color2 || !step || step === 0) {
         // One of the parameters are falsy, abort!
         return false;
     }
@@ -297,18 +311,59 @@ function _isInputsValid(color1, color2, steps) {
     return true;
 }
 
-function generateOutput(color1_str, color2_str, steps) {
+function _getBlendingColors(color1, color2, step, fromHex, toHex, precision = 2) {
+    let result = [color1];
+
+    const c1 = fromHex(color1);
+    const c2 = fromHex(color2);
+    const step_count = step + 1;
+
+    const step_a = (c2[0] - c1[0]) / step;
+    const step_b = (c2[1] - c1[1]) / step;
+    const step_c = (c2[2] - c1[2]) / step;
+
+    for (let i = 1; i <= step_count; i++) {
+        let cn = [...c1];
+        cn[0] += _round(step_a * i, precision);
+        cn[1] += _round(step_b * i, precision);
+        cn[2] += _round(step_c * i, precision);
+
+        result.push(toHex(cn));
+    }
+    result.push(color2);
+    return result;
+}
+
+function _updateContainerContent(container, colors) {
+    html_str = "";
+
+    for (const color of colors) {
+        html_str += '<div class="blend-color"><div class="color-preview" style="color: #' +
+                    color + '"></div><span class="color-hex-code">#' + color + '</span></div>';
+    }
+    container.inner_html = html_str;
+}
+
+function generateOutput(color1_str, color2_str, step) {
     c1 = str2hex(color1_str);
     c2 = str2hex(color2_str);
 
-    if (!_isInputsValid(c1, c2, steps)) {
+    if (!_isInputsValid(c1, c2, step)) {
         return false;
     }
 
     // Params are good, update them
-    _setInputValues(c1, c2, steps);
+    _setInputValues(c1, c2, step);
 
-    // Clear previous output
+    // Compute blending colors
+    const rgb_colors = _getBlendingColors(c1, c2, step, hex2rgb, rgb2hex, precision = 0);
+    const hsv_colors = _getBlendingColors(c1, c2, step, hex2hsv, hsv2hex);
+    const hsl_colors = _getBlendingColors(c1, c2, step, hex2hsl, hsl2hex);
+
+    // Update inner HTML of containers
+    _updateContainerContent(RGB_BLENDING_CONTAINER, rgb_colors);
+    _updateContainerContent(HSV_BLENDING_CONTAINER, hsv_colors);
+    _updateContainerContent(HSL_BLENDING_CONTAINER, hsl_colors);
 }
 
 function _removeForbiddenCharacters(str) {
@@ -331,6 +386,9 @@ function initWebsite() {
         // One of the invalid msg HTML tag cannot be retrieve, abort!
         return false;
     }
+    RGB_BLENDING_CONTAINER = document.getElementById('rgb-blending-container');
+    HSV_BLENDING_CONTAINER = document.getElementById('hsv-blending-container');
+    HSL_BLENDING_CONTAINER = document.getElementById('hsl-blending-container');
 
     // Random colors
     [COLOR1, COLOR2] = randomDefaultColors();
@@ -353,11 +411,11 @@ function initWebsite() {
                 COLOR2 = valid_hex_code;
             }
         }
-        // Check if steps param exists and is a valid integer
-        if (url_params.has('steps')) {
-            const param_steps = Number(urlParams.get('steps'));
-            if (Number.isInteger(param_steps) && param_steps > 0) {
-                STEP = param_steps_test;
+        // Check if step param exists and is a valid integer
+        if (url_params.has('step')) {
+            const param_step = Number(urlParams.get('step'));
+            if (Number.isInteger(param_step) && param_step > 0) {
+                STEP = param_step;
             }
         }
     }
