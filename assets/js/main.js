@@ -434,6 +434,9 @@ function initWebsite() {
 
     // Set values in inputs
     _setInputValues(COLOR1, COLOR2, STEP);
+
+    // First generate
+    generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
 }
 
 if (document.readyState !== 'loading') {
