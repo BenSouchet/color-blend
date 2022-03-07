@@ -294,7 +294,7 @@ function _isInputsValid(color1, color2, step) {
         COLOR2_INPUT.setCustomValidity('');
         COLOR2_INPUT_INVALID_MSG.classList.add('not-visible');
     }
-    if (!step || step === 0) {
+    if (!step || step === '0') {
         STEP_INPUT.setCustomValidity('Value must be at least 1.');
         STEP_INPUT_INVALID_MSG.classList.remove('not-visible');
     } else {
@@ -303,7 +303,7 @@ function _isInputsValid(color1, color2, step) {
     }
 
     // Check if we abort
-    if (!color1 || !color2 || !step || step === 0) {
+    if (!color1 || !color2 || !step || step === '0') {
         // One of the parameters are falsy, abort!
         return false;
     }
@@ -335,7 +335,7 @@ function _getBlendingColors(color1, color2, step, fromHex, toHex, precision = 2)
 }
 
 function _updateContainerContent(container, colors) {
-    html_str = "";
+    html_str = '';
 
     for (const color of colors) {
         html_str += '<div class="blend-color"><div class="color-preview" style="color: #' +
