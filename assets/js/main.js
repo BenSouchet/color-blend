@@ -273,8 +273,8 @@ function randomDefaultColors() {
 }
 
 function _setInputValues(color1, color2, step) {
-    COLOR1_INPUT.value = '#' + color1;
-    COLOR2_INPUT.value = '#' + color2;
+    COLOR1_INPUT.value = '#' + color1.toUpperCase();
+    COLOR2_INPUT.value = '#' + color2.toUpperCase();
     STEP_INPUT.value = Number(step);
 }
 
@@ -367,7 +367,7 @@ function generateOutput(color1_str, color2_str, step) {
 }
 
 function _removeForbiddenCharacters(str) {
-    return str.replace(/[^#a-f0-9]+/gi, '');
+    return str.replace(/[^#a-f0-9]+/gi, '').toUpperCase();
 }
 
 function initWebsite() {
