@@ -7,7 +7,7 @@ You can currently see three blending results according to the most popular color
 
 The goal (in the future) is to add **CMYK**, **Lab (CIELAB)**, **YPbPr** & **Xyz**.
 
-Want to help the project ? You can sponsor it via Github, [check here]().
+Want to help the project ? You can sponsor it via Github, [check here](https://github.com/BenSouchet/color-blend#sponsor-the-project).
 
 ## Source Code
 This project is entirely hosted [here on Github](https://github.com/BenSouchet/color-blend){:target="_blank" rel="noopener"}, the JavaScript `functions` can be found in [here](https://github.com/BenSouchet/color-blend/blob/main/assets/js/main.js){:target="_blank" rel="noopener"}.
