@@ -318,11 +318,11 @@ function _getBlendingColors(color1, color2, step, fromHex, toHex, precision = 2)
     const c2 = fromHex(color2);
     const step_count = parseInt(step) + 1;
 
-    const step_a = (c2[0] - c1[0]) / step;
-    const step_b = (c2[1] - c1[1]) / step;
-    const step_c = (c2[2] - c1[2]) / step;
+    const step_a = (c2[0] - c1[0]) / step_count;
+    const step_b = (c2[1] - c1[1]) / step_count;
+    const step_c = (c2[2] - c1[2]) / step_count;
 
-    for (let i = 1; i <= step_count; i++) {
+    for (let i = 1; i < step_count; i++) {
         let cn = [...c1];
         cn[0] += _round(step_a * i, precision);
         cn[1] += _round(step_b * i, precision);
