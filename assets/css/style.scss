@@ -165,14 +165,14 @@ a:hover, a:focus {
 
 .invalid-input-msg a,
 .invalid-input-msg a:visited {
-    color: blue;
-    text-decoration: dotted;
-    cursor: help;
+    color: #541111;
+    text-decoration: underline;
+	text-decoration-style: dotted;
 }
 
 .invalid-input-msg a:hover,
 .invalid-input-msg a:focus {
-    color: green;
+    color: #df2a2a;
 }
 
 #input-controls input[type=number]::-webkit-inner-spin-button, 

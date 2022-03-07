@@ -1,9 +1,12 @@
 let COLOR1;
 let COLOR2;
-let STEPS = 6;
+let STEP = 6;
 let COLOR1_INPUT;
+let COLOR1_INPUT_INVALID_MSG;
 let COLOR2_INPUT;
-let STEPS_INPUT;
+let COLOR2_INPUT_INVALID_MSG;
+let STEP_INPUT;
+let STEP_INPUT_INVALID_MSG;
 
 function _mod(n, m) {
     // source : https://stackoverflow.com/a/17323608/10797718
@@ -258,32 +261,47 @@ function randomDefaultColors() {
 function _setInputValues(color1, color2, steps) {
     COLOR1_INPUT.value = '#' + color1;
     COLOR2_INPUT.value = '#' + color2;
-    STEPS_INPUT.value = Number(steps);
+    STEP_INPUT.value = Number(steps);
+}
+
+function _isInputsValid(color1, color2, steps) {
+    // Invalidate input(s)
+    if (!color1) {
+        COLOR1_INPUT.setCustomValidity('Invalid Hex Color Code.');
+        COLOR1_INPUT_INVALID_MSG.classList.remove('not-visible');
+    } else {
+        COLOR1_INPUT.setCustomValidity('');
+        COLOR1_INPUT_INVALID_MSG.classList.add('not-visible');
+    }
+    if (!color2) {
+        COLOR2_INPUT.setCustomValidity('Invalid Hex Color Code.');
+        COLOR2_INPUT_INVALID_MSG.classList.remove('not-visible');
+    } else {
+        COLOR2_INPUT.setCustomValidity('');
+        COLOR2_INPUT_INVALID_MSG.classList.add('not-visible');
+    }
+    if (!steps) {
+        STEP_INPUT.setCustomValidity('Value must be at least 1.');
+        STEP_INPUT_INVALID_MSG.classList.remove('not-visible');
+    } else {
+        STEP_INPUT.setCustomValidity('');
+        STEP_INPUT_INVALID_MSG.classList.add('not-visible');
+    }
+
+    // Check if we abort
+    if (!color1 || !color2 || !steps) {
+        // One of the parameters are falsy, abort!
+        return false;
+    }
+
+    return true;
 }
 
 function generateOutput(color1_str, color2_str, steps) {
     c1 = str2hex(color1_str);
     c2 = str2hex(color2_str);
 
-    // Invalidate input(s)
-    if (!c1) {
-        COLOR1_INPUT.setCustomValidity('Invalid Hex Color Code.');
-    } else {
-        COLOR1_INPUT.setCustomValidity('');
-    }
-    if (!c2) {
-        COLOR2_INPUT.setCustomValidity('Invalid Hex Color Code.');
-    } else {
-        COLOR2_INPUT.setCustomValidity('');
-    }
-    if (!steps) {
-        STEPS_INPUT.setCustomValidity('Value must be at least 1.');
-    } else {
-        STEPS_INPUT.setCustomValidity('');
-    }
-    // Check if we abort
-    if (!c1 || !c2 || !steps) {
-        // One of the parameters are falsy, abort!
+    if (!_isInputsValid(c1, c2, steps)) {
         return false;
     }
 
@@ -298,6 +316,22 @@ function _removeForbiddenCharacters(str) {
 }
 
 function initWebsite() {
+    // Retrieve DOM objects
+    COLOR1_INPUT = document.getElementById('color-1-hex');
+    COLOR2_INPUT = document.getElementById('color-2-hex');
+    STEP_INPUT = document.getElementById('step-num');
+    if (!COLOR1_INPUT || !COLOR2_INPUT || !STEP_INPUT) {
+        // One of the inputs cannot be retrieve, abort!
+        return false;
+    }
+    COLOR1_INPUT_INVALID_MSG = document.getElementById('color-1-invalid-msg');
+    COLOR2_INPUT_INVALID_MSG = document.getElementById('color-2-invalid-msg');
+    STEP_INPUT_INVALID_MSG = document.getElementById('step-invalid-msg');
+    if (!COLOR1_INPUT_INVALID_MSG || !COLOR2_INPUT_INVALID_MSG || !STEP_INPUT_INVALID_MSG) {
+        // One of the invalid msg HTML tag cannot be retrieve, abort!
+        return false;
+    }
+
     // Random colors
     [COLOR1, COLOR2] = randomDefaultColors();
 
@@ -323,33 +357,25 @@ function initWebsite() {
         if (url_params.has('steps')) {
             const param_steps = Number(urlParams.get('steps'));
             if (Number.isInteger(param_steps) && param_steps > 0) {
-                STEPS = param_steps_test;
+                STEP = param_steps_test;
             }
         }
     }
 
-    // Retrieve DOM objects
-    COLOR1_INPUT = document.getElementById('color-1-hex');
-    COLOR2_INPUT = document.getElementById('color-2-hex');
-    STEPS_INPUT = document.getElementById('step-num');
-    if (!COLOR1_INPUT || !COLOR2_INPUT || !STEPS_INPUT) {
-        // One of the inputs cannot be retrieve, abort!
-        return false;
-    }
     COLOR1_INPUT.addEventListener('input', function (evt) {
         COLOR1_INPUT.value = _removeForbiddenCharacters(COLOR1_INPUT.value);
-        generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEPS_INPUT.value);
+        generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
     });
-    STEPS_INPUT.addEventListener('input', function (evt) {
-        generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEPS_INPUT.value);
+    STEP_INPUT.addEventListener('input', function (evt) {
+        generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
     });
     COLOR2_INPUT.addEventListener('input', function (evt) {
         COLOR2_INPUT.value = _removeForbiddenCharacters(COLOR2_INPUT.value);
-        generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEPS_INPUT.value);
+        generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
     });
 
     // Set values in inputs
-    _setInputValues(COLOR1, COLOR2, STEPS);
+    _setInputValues(COLOR1, COLOR2, STEP);
 }
 
 if (document.readyState !== 'loading') {
