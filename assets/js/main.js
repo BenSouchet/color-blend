@@ -199,7 +199,7 @@ function rgb2hsl(rgb, precision = 2) {
         // Between magenta & cyan
         h = (r - g) / d + 4.0;
     }
-    return [_round(_mod(h * 60, 360), precision), s, v];
+    return [_round(_mod(h * 60, 360), precision), s, l];
 }
 
 function _hue2comp(m1, m2, hue) {
@@ -316,7 +316,7 @@ function _getBlendingColors(color1, color2, step, fromHex, toHex, precision = 2)
 
     const c1 = fromHex(color1);
     const c2 = fromHex(color2);
-    const step_count = step + 1;
+    const step_count = parseInt(step) + 1;
 
     const step_a = (c2[0] - c1[0]) / step;
     const step_b = (c2[1] - c1[1]) / step;
