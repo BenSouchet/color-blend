@@ -31,7 +31,7 @@ function str2hex(str) {
     if (str.charAt(0) === '#') {
         str = str.substring(1);
     }
-    const match = str.match(/[a-f0-9]{8}|[a-f0-9]{6}|[a-f0-9]{3}/i);
+    const match = str.match(/^\#?[a-f0-9]{8}$|^[a-f0-9]{6}$|^[a-f0-9]{3}$/i);
     if (!match) {
 		return null;
     }
