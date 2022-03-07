@@ -1,11 +1,13 @@
 ## Differences between blending methods
 Depending on how the colors are stored (RGB, HSV/HSB, HSL, ...), the calculation and therefore the result of the blending between two colors is different.
 
-For **HSV/HSB** and **HSL** it's isn't really a blending since the *hue* component doesn't blend only move towards the destination value.
+For **HSV/HSB** and **HSL** it's isn't really a blending since the `hue` component doesn't blend only move towards the destination value.
 
 You can currently see three blending results according to the most popular color models: **RGB**, **HSB/HSV** & **HSL**. Since the color model doesn't store a color the same way the blending differ.
 
-The goal (in the future) is to add **CMYK**, **Lab(CIELAB, CIE-L\*ab, L\*a\*b)**, **YPbPr** & **Xyz**. Want to help the project ? You can sponsor it via Github, [check here]().
+The goal (in the future) is to add **CMYK**, **Lab (CIELAB)**, **YPbPr** & **Xyz**.
+
+Want to help the project ? You can sponsor it via Github, [check here]().
 
 ## Source Code
 This project is entirely hosted [here on Github](https://github.com/BenSouchet/color-blend){:target="_blank" rel="noopener"}, the JavaScript `functions` can be found in [here](https://github.com/BenSouchet/color-blend/blob/main/assets/js/main.js){:target="_blank" rel="noopener"}.
