@@ -341,7 +341,7 @@ function _updateContainerContent(container, colors) {
         html_str += '<div class="blend-color"><div class="color-preview" style="color: #' +
                     color + '"></div><span class="color-hex-code">#' + color + '</span></div>';
     }
-    container.inner_html = html_str;
+    container.innerHTML = html_str;
 }
 
 function generateOutput(color1_str, color2_str, step) {
