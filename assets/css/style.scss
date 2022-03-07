@@ -105,7 +105,7 @@ a:hover, a:focus {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
-    padding: 10px 0 30px;
+    padding: 10px 0 6px;
 	border-bottom: 2px solid #0000001f;
     align-items: end;
 }
@@ -113,6 +113,7 @@ a:hover, a:focus {
 #input-controls > div {
     width: fit-content;
 	margin: 0 auto;
+    text-align: center;
 }
 
 #input-controls h3 {
@@ -145,6 +146,33 @@ a:hover, a:focus {
 	height: 2rem;
 	border-bottom: 4px solid #0000002b;
     padding-left: 8px;
+}
+
+#input-controls input:invalid {
+    color: white;
+	background-color: #ff0000a8;
+}
+
+.invalid-input-msg {
+    color: #bd0000;
+	font-size: 0.8rem;
+	margin: 0.4rem 0 0;
+}
+
+.invalid-input-msg.not-visible {
+    visibility: hidden;
+}
+
+.invalid-input-msg a,
+.invalid-input-msg a:visited {
+    color: blue;
+    text-decoration: dotted;
+    cursor: help;
+}
+
+.invalid-input-msg a:hover,
+.invalid-input-msg a:focus {
+    color: green;
 }
 
 #input-controls input[type=number]::-webkit-inner-spin-button, 
