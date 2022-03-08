@@ -10,6 +10,9 @@ let STEP_INPUT_INVALID_MSG;
 let RGB_BLENDING_CONTAINER;
 let HSV_BLENDING_CONTAINER;
 let HSL_BLENDING_CONTAINER;
+let POPUP_CONTAINER;
+let POPUP_MSG_SPAN;
+let TIMEOUT_HANDLE = null;
 
 function _mod(n, m) {
     // source : https://stackoverflow.com/a/17323608/10797718
@@ -345,8 +348,25 @@ function _updateContainerContent(container, colors) {
 }
 
 function copyColorCodeToClipboard(event) {
-    console.log(event.currentTarget);
-    console.log(this);
+    let color_hex_container = event.currentTarget.getElementsByClassName('color-hex-code');
+
+    // Retrieve Hex Color Code
+    hex_code = color_hex_container.item(0).innerText;
+
+    // Set The info message
+    msg = hex_code + ' copied to clipboard!';
+    POPUP_MSG_SPAN.innerText = msg;
+    
+    // Remove Previous Timeout (if exists)
+    clearTimeout(TIMEOUT_HANDLE);
+
+    // Remove hidden class (if exists)
+    POPUP_CONTAINER.classList.remove('hidden');
+
+    // Add new timeout
+    TIMEOUT_HANDLE = setTimeout(function() {
+        POPUP_CONTAINER.classList.add('hidden');
+    }, 3000);
 }
 
 function generateOutput(color1_str, color2_str, step) {
@@ -386,20 +406,17 @@ function initWebsite() {
     COLOR1_INPUT = document.getElementById('color-1-hex');
     COLOR2_INPUT = document.getElementById('color-2-hex');
     STEP_INPUT = document.getElementById('step-num');
-    if (!COLOR1_INPUT || !COLOR2_INPUT || !STEP_INPUT) {
-        // One of the inputs cannot be retrieve, abort!
-        return false;
-    }
+
     COLOR1_INPUT_INVALID_MSG = document.getElementById('color-1-invalid-msg');
     COLOR2_INPUT_INVALID_MSG = document.getElementById('color-2-invalid-msg');
     STEP_INPUT_INVALID_MSG = document.getElementById('step-invalid-msg');
-    if (!COLOR1_INPUT_INVALID_MSG || !COLOR2_INPUT_INVALID_MSG || !STEP_INPUT_INVALID_MSG) {
-        // One of the invalid msg HTML tag cannot be retrieve, abort!
-        return false;
-    }
+
     RGB_BLENDING_CONTAINER = document.getElementById('rgb-blending-container');
     HSV_BLENDING_CONTAINER = document.getElementById('hsv-blending-container');
     HSL_BLENDING_CONTAINER = document.getElementById('hsl-blending-container');
+
+    POPUP_CONTAINER = document.getElementById('popup-info-container');
+    POPUP_MSG_SPAN = document.getElementById('popup-info-msg');
 
     // Random colors
     [COLOR1, COLOR2] = randomDefaultColors();
