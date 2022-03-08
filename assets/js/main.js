@@ -338,7 +338,7 @@ function _getBlendingColors(color1, color2, step, fromHex, toHex, precision = 2)
 }
 
 function _updateContainerContent(container, colors) {
-    html_str = '';
+    let html_str = '';
 
     for (const color of colors) {
         html_str += '<div class="blend-color"><div class="color-preview" style="color: #' +
@@ -347,31 +347,47 @@ function _updateContainerContent(container, colors) {
     container.innerHTML = html_str;
 }
 
+function updateClipboardAndDisplayPopup(hexCode) {
+    navigator.clipboard.writeText(hexCode).then(function (hexCode) {
+         // Set The info message
+        const msg = hexCode + ' copied to clipboard!';
+        POPUP_MSG_SPAN.innerText = msg;
+        
+        // Remove Previous Timeout (if exists)
+        clearTimeout(TIMEOUT_HANDLE);
+
+        // Remove hidden class (if exists)
+        POPUP_CONTAINER.classList.remove('hidden');
+
+        // Add new timeout
+        TIMEOUT_HANDLE = setTimeout(function() {
+            POPUP_CONTAINER.classList.add('hidden');
+        }, 3000);
+    }, function () {
+        console.log("FAILED: Cannot copy color code to clipboard.");
+    });
+}
+
 function copyColorCodeToClipboard(event) {
     let color_hex_container = event.currentTarget.getElementsByClassName('color-hex-code');
-
-    // Retrieve Hex Color Code
-    hex_code = color_hex_container.item(0).innerText;
-
-    // Set The info message
-    msg = hex_code + ' copied to clipboard!';
-    POPUP_MSG_SPAN.innerText = msg;
     
-    // Remove Previous Timeout (if exists)
-    clearTimeout(TIMEOUT_HANDLE);
+    // Retrieve Hex Color Code
+    const hex_code = color_hex_container.item(0).innerText;
 
-    // Remove hidden class (if exists)
-    POPUP_CONTAINER.classList.remove('hidden');
-
-    // Add new timeout
-    TIMEOUT_HANDLE = setTimeout(function() {
-        POPUP_CONTAINER.classList.add('hidden');
-    }, 3000);
+    // Copy to clipboard
+    navigator.permissions.query({ name: "clipboard-write" }).then(result => {
+        if (result.state == "granted" || result.state == "prompt") {
+            /* write to the clipboard & display popup msg */
+            updateClipboardAndDisplayPopup(hex_code);
+        } else {
+            console.log("FAILED: Cannot copy color code to clipboard, permission from the browser not granted!");
+        }
+    });
 }
 
 function generateOutput(color1_str, color2_str, step) {
-    c1 = str2hex(color1_str);
-    c2 = str2hex(color2_str);
+    const c1 = str2hex(color1_str);
+    const c2 = str2hex(color2_str);
 
     if (!_isInputsValid(c1, c2, step)) {
         return false;
