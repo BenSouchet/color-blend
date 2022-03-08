@@ -15,6 +15,7 @@ This project is entirely hosted [here on Github](https://github.com/BenSouchet/c
 Developers, you can play around with you browser dev tools, the file isn't minified so it's easy to check and debug.
 
 ## Color Models
+
 ### RGB
 The **RGB** (**R**ed, **G**reen, **B**lue) color model is the most known, and the most used every day. It defines a color space in terms of three components: Red, Green and Blue. Each of them with a value between `0` and `255`.  
 The **RGB** color model is an additive one. In other words, Red, Green and Blue values (known as the three primary colors) are combined to reproduce other colors.
