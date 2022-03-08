@@ -375,7 +375,7 @@ function copyColorCodeToClipboard(event) {
     const hex_code = color_hex_container.item(0).innerText;
 
     // Copy to clipboard
-    navigator.permissions.query({ name: "clipboard-write" }).then(result => {
+    navigator.permissions.query({ name: "clipboard-write" }).then(function(result, hex_code) {
         if (result.state == "granted" || result.state == "prompt") {
             /* write to the clipboard & display popup msg */
             updateClipboardAndDisplayPopup(hex_code);

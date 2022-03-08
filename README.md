@@ -12,12 +12,16 @@ The JavaScript `functions` used on the website can be found in [this file](https
 
 If you want, you can play with the JavaScript functions directly with you browser dev tools, the file isn't minified so it's easy to check and debug.
 
+**Disclaimer**: I know putting all the JS in one big file isn't top, but I haven't found the time yet to cut the file properly into small files (at least three: main one for DOM manipulations, one for color convertions & last one for blending functions).
+
+I also want in the future to remove the call to Google Fonts by putting the font directly into the `assets` folder. Less GAFAM tracking, less loading time.
+
 ## Sponsor the project
 
 Want to help this project to get better, bigger, with more features ?  
 I have in mind adding **CMYK**, **Lab (CIELAB)**, **YPbPr** & **Xyz** but adding these color models or others features requires development time...
 
-The solution: [sponsor me](https://github.com/sponsors/BenSouchet) so I can allocate time to work more on the project 🌟💫
+The solution? [Become a sponsor](https://github.com/sponsors/BenSouchet), so I can allocate time to work more on this project 🌟💫
 
 ## Others Ressouces & Useful links
  - [colorizer.org](http://colorizer.org/), a website to interact with color components and see how color are represented according to multiple colr models. You also find related colors (complementary, triad, square, analogic, ...).
