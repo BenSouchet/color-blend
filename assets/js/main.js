@@ -13,6 +13,7 @@ let HSL_BLENDING_CONTAINER;
 let POPUP_CONTAINER;
 let POPUP_MSG_SPAN;
 let TIMEOUT_HANDLE = null;
+let LAST_HEX_CODE;
 
 function _mod(n, m) {
     // source : https://stackoverflow.com/a/17323608/10797718
@@ -347,10 +348,10 @@ function _updateContainerContent(container, colors) {
     container.innerHTML = html_str;
 }
 
-function updateClipboardAndDisplayPopup(hexCode) {
-    navigator.clipboard.writeText(hexCode).then(function (hexCode) {
+function updateClipboardAndDisplayPopup() {
+    navigator.clipboard.writeText(LAST_HEX_CODE).then(function () {
          // Set The info message
-        const msg = hexCode + ' copied to clipboard!';
+        const msg = LAST_HEX_CODE + ' copied to clipboard!';
         POPUP_MSG_SPAN.innerText = msg;
         
         // Remove Previous Timeout (if exists)
@@ -372,13 +373,14 @@ function copyColorCodeToClipboard(event) {
     let color_hex_container = event.currentTarget.getElementsByClassName('color-hex-code');
     
     // Retrieve Hex Color Code
-    const hex_code = color_hex_container.item(0).innerText;
+    // Don't know how to pass this to the "then()" of the promise without global variable...
+    LAST_HEX_CODE = color_hex_container.item(0).innerText;
 
     // Copy to clipboard
-    navigator.permissions.query({ name: "clipboard-write" }).then(function(result, hex_code) {
+    navigator.permissions.query({ name: "clipboard-write" }).then(result => {
         if (result.state == "granted" || result.state == "prompt") {
             /* write to the clipboard & display popup msg */
-            updateClipboardAndDisplayPopup(hex_code);
+            updateClipboardAndDisplayPopup();
         } else {
             console.log("FAILED: Cannot copy color code to clipboard, permission from the browser not granted!");
         }
