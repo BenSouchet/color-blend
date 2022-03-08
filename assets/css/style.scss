@@ -273,6 +273,45 @@ a:hover, a:focus {
 	border-top: solid 2px #ebebeb;
 }
 
+#popup-info-container {
+    position: absolute;
+	justify-content: center;
+	display: flex;
+	top: 0;
+	left: 0;
+    opacity: 1;
+	width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-transition: all ease 0.4s;
+    -moz-transition: all ease 0.4s;
+    -ms-transition: all ease 0.4s;
+    -o-transition: all ease 0.4s;
+    transition: all ease 0.4s;
+}
+
+#popup-info-containe.hidden {
+    top: -80px;
+    opacity: 0;
+}
+
+#popup-info-container #popup-info-msg {
+    pointer-events: none;
+    background-color: #b6e5b4f2;
+	color: #396436;
+	border: 1px solid #95d591;
+	min-width: max-content;
+	text-align: center;
+	width: 36%;
+	padding: 10px 30px;
+	margin-top: 20px;
+	position: fixed;
+	box-shadow: 0px 0px 26px 1px #1f461d8f;
+	border-radius: 6px;
+	font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
 @media screen and (min-width: 42em) and (max-width: 64em) {
     .main-content {
         padding: 2rem 1.5rem 0;

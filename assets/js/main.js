@@ -344,6 +344,11 @@ function _updateContainerContent(container, colors) {
     container.innerHTML = html_str;
 }
 
+function copyColorCodeToClipboard(event) {
+    console.log(event.currentTarget);
+    console.log(this);
+}
+
 function generateOutput(color1_str, color2_str, step) {
     c1 = str2hex(color1_str);
     c2 = str2hex(color2_str);
@@ -364,6 +369,12 @@ function generateOutput(color1_str, color2_str, step) {
     _updateContainerContent(RGB_BLENDING_CONTAINER, rgb_colors);
     _updateContainerContent(HSV_BLENDING_CONTAINER, hsv_colors);
     _updateContainerContent(HSL_BLENDING_CONTAINER, hsl_colors);
+
+    // Add listeners
+    let color_containers = document.getElementsByClassName('blend-color');
+    for (let color_container in color_containers) {
+        color_container.addEventListener('click', copyColorCodeToClipboard);
+    }
 }
 
 function _removeForbiddenCharacters(str) {
