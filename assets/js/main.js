@@ -372,7 +372,7 @@ function generateOutput(color1_str, color2_str, step) {
 
     // Add listeners
     let color_containers = document.getElementsByClassName('blend-color');
-    for (let color_container in color_containers) {
+    for (let color_container of color_containers) {
         color_container.addEventListener('click', copyColorCodeToClipboard);
     }
 }
