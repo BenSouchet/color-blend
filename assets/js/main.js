@@ -387,6 +387,12 @@ function copyColorCodeToClipboard(event) {
     });
 }
 
+function _updateUrlAccordingToParams(color1, color2, step) {
+    let new_url = new URL(window.location);
+    new_url.searchParams = new URLSearchParams({"color1": color1, "color2": color2, "step": step});
+    window.history.pushState({}, '', new_url);
+}
+
 function generateOutput(color1_str, color2_str, step) {
     const c1 = str2hex(color1_str);
     const c2 = str2hex(color2_str);
@@ -397,6 +403,9 @@ function generateOutput(color1_str, color2_str, step) {
 
     // Params are good, update them
     _setInputValues(c1, c2, step);
+
+    // Update URL
+    _updateUrlAccordingToParams(c1, c2, step);
 
     // Compute blending colors
     const rgb_colors = _getBlendingColors(c1, c2, step, hex2rgb, rgb2hex, precision = 0);
