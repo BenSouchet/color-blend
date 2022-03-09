@@ -387,13 +387,7 @@ function copyColorCodeToClipboard(event) {
     });
 }
 
-function _updateUrlAccordingToParams(color1, color2, step) {
-    let new_url = new URL(window.location);
-    new_url.searchParams = new URLSearchParams({"color1": color1, "color2": color2, "step": step});
-    window.history.pushState({}, '', new_url);
-}
-
-function generateOutput(color1_str, color2_str, step) {
+function generateOutput(color1_str, color2_str, step, first_time = false) {
     const c1 = str2hex(color1_str);
     const c2 = str2hex(color2_str);
 
@@ -405,7 +399,13 @@ function generateOutput(color1_str, color2_str, step) {
     _setInputValues(c1, c2, step);
 
     // Update URL
-    _updateUrlAccordingToParams(c1, c2, step);
+    const url_params = new URLSearchParams({"color1": color1, "color2": color2, "step": step});
+    if (first_time) {
+        // Since it's the first time the output is generated we don't create a new history state.
+        window.history.replaceState({}, '', '?'+url_params.toString());
+    } else {
+        window.history.pushState({}, '', '?'+url_params.toString());
+    }
 
     // Compute blending colors
     const rgb_colors = _getBlendingColors(c1, c2, step, hex2rgb, rgb2hex, precision = 0);
@@ -491,7 +491,7 @@ function initWebsite() {
     _setInputValues(COLOR1, COLOR2, STEP);
 
     // First generate
-    generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
+    generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value, first_time = true);
 }
 
 if (document.readyState !== 'loading') {
