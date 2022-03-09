@@ -1,7 +1,7 @@
 ## Differences between blending methods
 Depending on how the colors are stored (RGB, HSV/HSB, HSL, ...), the calculation and therefore the result of the blending between two colors is different.
 
-For **HSV/HSB** and **HSL** it's isn't really a blending since the `hue` component doesn't blend only move towards the destination value.
+For **HSV/HSB** and **HSL** it's isn't really a true blending (if colors have different hue) since the `hue` component doesn't blend in these color models only move towards the destination value.
 
 You can currently see three blending results according to the most popular color models: **RGB**, **HSB/HSV** & **HSL**. Since the color model doesn't store a color the same way the blending differ.
 
