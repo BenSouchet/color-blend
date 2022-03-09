@@ -399,7 +399,7 @@ function generateOutput(color1_str, color2_str, step, first_time = false) {
     _setInputValues(c1, c2, step);
 
     // Update URL
-    const url_params = new URLSearchParams({"color1": color1, "color2": color2, "step": step});
+    const url_params = new URLSearchParams({"color1": c1, "color2": c2, "step": step});
     if (first_time) {
         // Since it's the first time the output is generated we don't create a new history state.
         window.history.replaceState({}, '', '?'+url_params.toString());
