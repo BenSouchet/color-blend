@@ -470,7 +470,6 @@ function _parseUrlAndUpdateOutput() {
 }
 
 function initWebsite() {
-    console.log('init()');
     // Retrieve DOM objects
     COLOR1_INPUT = document.getElementById('color-1-hex');
     COLOR2_INPUT = document.getElementById('color-2-hex');
@@ -496,7 +495,6 @@ function initWebsite() {
         generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
     });
     STEP_INPUT.addEventListener('input', function (evt) {
-        console.log('step changed');
         generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
     });
     COLOR2_INPUT.addEventListener('input', function (evt) {
