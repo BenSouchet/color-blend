@@ -387,6 +387,22 @@ function copyColorCodeToClipboard(event) {
     });
 }
 
+function _updateUrl(color1, color2, step, replace_state = false) {
+    const curr_search = window.location.search;
+    const hash = window.location.hash;
+
+    const url_params = new URLSearchParams({ "color1": color1, "color2": color2, "step": step });
+    const new_search = '?' + url_params.toString();
+
+    if (curr_search !== new_search) {
+        if (replace_state) {
+            window.history.replaceState({}, '', new_search + hash);
+        } else {
+            window.history.pushState({}, '', new_search + hash);
+        }
+    }
+}
+
 function generateOutput(color1_str, color2_str, step, first_time = false) {
     const c1 = str2hex(color1_str);
     const c2 = str2hex(color2_str);
@@ -396,16 +412,10 @@ function generateOutput(color1_str, color2_str, step, first_time = false) {
     }
 
     // Params are good, update them
-    _setInputValues(c1, c2, step);
+    _setInputValues(c1, c2, step, first_time);
 
     // Update URL
-    const url_params = new URLSearchParams({"color1": c1, "color2": c2, "step": step});
-    if (first_time) {
-        // Since it's the first time the output is generated we don't create a new history state.
-        window.history.replaceState({}, '', '?'+url_params.toString());
-    } else {
-        window.history.pushState({}, '', '?'+url_params.toString());
-    }
+    _updateUrl(c1, c2, step, first_time);
 
     // Compute blending colors
     const rgb_colors = _getBlendingColors(c1, c2, step, hex2rgb, rgb2hex, precision = 0);
@@ -428,26 +438,7 @@ function _removeForbiddenCharacters(str) {
     return str.replace(/[^#a-f0-9]+/gi, '').toUpperCase();
 }
 
-function initWebsite() {
-    // Retrieve DOM objects
-    COLOR1_INPUT = document.getElementById('color-1-hex');
-    COLOR2_INPUT = document.getElementById('color-2-hex');
-    STEP_INPUT = document.getElementById('step-num');
-
-    COLOR1_INPUT_INVALID_MSG = document.getElementById('color-1-invalid-msg');
-    COLOR2_INPUT_INVALID_MSG = document.getElementById('color-2-invalid-msg');
-    STEP_INPUT_INVALID_MSG = document.getElementById('step-invalid-msg');
-
-    RGB_BLENDING_CONTAINER = document.getElementById('rgb-blending-container');
-    HSV_BLENDING_CONTAINER = document.getElementById('hsv-blending-container');
-    HSL_BLENDING_CONTAINER = document.getElementById('hsl-blending-container');
-
-    POPUP_CONTAINER = document.getElementById('popup-info-container');
-    POPUP_MSG_SPAN = document.getElementById('popup-info-msg');
-
-    // Random colors
-    [COLOR1, COLOR2] = randomDefaultColors();
-
+function _parseUrlAndUpdateOutput() {
     // Parse url parameters if exists
     const query_string = window.location.search;
     if (query_string) {
@@ -468,13 +459,37 @@ function initWebsite() {
         }
         // Check if step param exists and is a valid integer
         if (url_params.has('step')) {
-            const param_step = Number(urlParams.get('step'));
+            const param_step = Number(url_params.get('step'));
             if (Number.isInteger(param_step) && param_step > 0) {
                 STEP = param_step;
             }
         }
     }
 
+    generateOutput(COLOR1, COLOR2, STEP);
+}
+
+function initWebsite() {
+    // Retrieve DOM objects
+    COLOR1_INPUT = document.getElementById('color-1-hex');
+    COLOR2_INPUT = document.getElementById('color-2-hex');
+    STEP_INPUT = document.getElementById('step-num');
+
+    COLOR1_INPUT_INVALID_MSG = document.getElementById('color-1-invalid-msg');
+    COLOR2_INPUT_INVALID_MSG = document.getElementById('color-2-invalid-msg');
+    STEP_INPUT_INVALID_MSG = document.getElementById('step-invalid-msg');
+
+    RGB_BLENDING_CONTAINER = document.getElementById('rgb-blending-container');
+    HSV_BLENDING_CONTAINER = document.getElementById('hsv-blending-container');
+    HSL_BLENDING_CONTAINER = document.getElementById('hsl-blending-container');
+
+    POPUP_CONTAINER = document.getElementById('popup-info-container');
+    POPUP_MSG_SPAN = document.getElementById('popup-info-msg');
+
+    // Random colors
+    [COLOR1, COLOR2] = randomDefaultColors();
+
+    // Add listeners for user interaction
     COLOR1_INPUT.addEventListener('input', function (evt) {
         COLOR1_INPUT.value = _removeForbiddenCharacters(COLOR1_INPUT.value);
         generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
@@ -487,11 +502,16 @@ function initWebsite() {
         generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value);
     });
 
+    // Add listener to update re-generate the output when user press back on is browser
+    window.addEventListener('popstate', function() {
+        _parseUrlAndUpdateOutput();
+    });
+
     // Set values in inputs
     _setInputValues(COLOR1, COLOR2, STEP);
 
     // First generate
-    generateOutput(COLOR1_INPUT.value, COLOR2_INPUT.value, STEP_INPUT.value, first_time = true);
+    generateOutput(COLOR1, COLOR2, STEP, first_time = true);
 }
 
 if (document.readyState !== 'loading') {
