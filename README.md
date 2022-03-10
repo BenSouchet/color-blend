@@ -8,7 +8,7 @@ Website here >> https://bensouchet.github.io/color-blend/ <<
 
 ## Source Code
 
-The JavaScript `functions` used on the website can be found in [this file](https://github.com/BenSouchet/color-blend/blob/main/assets/js/main.js).
+The JavaScript `functions` used on the website can be found in [this file](https://github.com/BenSouchet/color-blend/blob/gh-pages/assets/js/main.js).
 
 If you want, you can play with the JavaScript functions directly with you browser dev tools, the file isn't minified so it's easy to check and debug.
 
